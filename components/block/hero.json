@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_block_heroes",
+  "info": {
+    "name": "hero",
+    "icon": "image"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "heading": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.heading"
+    }
+  }
+}

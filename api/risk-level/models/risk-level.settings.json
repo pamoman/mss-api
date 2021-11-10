@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "risk_levels",
+  "info": {
+    "name": "Risk level",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "level": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "color": {
+      "type": "enumeration",
+      "enum": [
+        "Red",
+        "Orange",
+        "Green",
+        "Brown",
+        "Yellow",
+        "Pink",
+        "Purple"
+      ]
+    },
+    "information": {
+      "type": "richtext"
+    },
+    "risk_assessments": {
+      "via": "risk_level",
+      "collection": "risk-assessment"
+    },
+    "apps": {
+      "via": "risk_level",
+      "collection": "app"
+    },
+    "default": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

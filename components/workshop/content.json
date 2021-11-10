@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_workshop_contents",
+  "info": {
+    "name": "slide",
+    "icon": "hammer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "sub_heading": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.heading"
+    },
+    "image": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.image"
+    }
+  }
+}

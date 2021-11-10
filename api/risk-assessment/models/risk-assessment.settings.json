@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "risk_assessments",
+  "info": {
+    "name": "Risk Assessment",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "privacy_type": {
+      "model": "privacy-type",
+      "via": "risk_assessments"
+    },
+    "data_type": {
+      "model": "data-type"
+    },
+    "data_purpose": {
+      "model": "data-purpose"
+    },
+    "apps": {
+      "via": "risk_assessments",
+      "collection": "app"
+    },
+    "risk_level": {
+      "via": "risk_assessments",
+      "model": "risk-level"
+    }
+  }
+}

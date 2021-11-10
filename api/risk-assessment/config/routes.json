@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/risk-assessments",
+      "handler": "risk-assessment.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/risk-assessments/count",
+      "handler": "risk-assessment.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/risk-assessments/:id",
+      "handler": "risk-assessment.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/risk-assessments",
+      "handler": "risk-assessment.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/risk-assessments/:id",
+      "handler": "risk-assessment.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/risk-assessments/:id",
+      "handler": "risk-assessment.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

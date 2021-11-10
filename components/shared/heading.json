@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_shared_headings",
+  "info": {
+    "name": "heading",
+    "icon": "heading",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "h7",
+        "h8",
+        "h9"
+      ],
+      "default": "h2",
+      "required": true
+    }
+  }
+}

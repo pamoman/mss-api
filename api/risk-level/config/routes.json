@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/risk-levels",
+      "handler": "risk-level.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/risk-levels/count",
+      "handler": "risk-level.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/risk-levels/:id",
+      "handler": "risk-level.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/risk-levels",
+      "handler": "risk-level.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/risk-levels/:id",
+      "handler": "risk-level.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/risk-levels/:id",
+      "handler": "risk-level.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_shared_slideshow_settings",
+  "info": {
+    "name": "Slideshow settings",
+    "icon": "sliders-h",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "interval": {
+      "type": "integer",
+      "default": 5
+    },
+    "autoplay": {
+      "type": "boolean",
+      "default": true
+    },
+    "dots": {
+      "type": "boolean",
+      "default": true
+    },
+    "arrows": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

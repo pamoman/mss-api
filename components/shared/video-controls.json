@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_shared_video_controls",
+  "info": {
+    "name": "Video settings",
+    "icon": "play",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "autoplay": {
+      "type": "boolean",
+      "default": true
+    },
+    "muted": {
+      "type": "boolean",
+      "default": true
+    },
+    "controls": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

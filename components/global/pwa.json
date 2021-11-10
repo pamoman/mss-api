@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_global_pwa",
+  "info": {
+    "name": "PWA",
+    "icon": "mobile-alt",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "manifest": {
+      "type": "json",
+      "required": true
+    },
+    "icon_links": {
+      "type": "json",
+      "required": false
+    },
+    "icon_meta": {
+      "type": "json"
+    },
+    "icons": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    }
+  }
+}

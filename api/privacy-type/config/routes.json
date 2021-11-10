@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/privacy-types",
+      "handler": "privacy-type.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/privacy-types/count",
+      "handler": "privacy-type.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/privacy-types/:id",
+      "handler": "privacy-type.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/privacy-types",
+      "handler": "privacy-type.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/privacy-types/:id",
+      "handler": "privacy-type.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/privacy-types/:id",
+      "handler": "privacy-type.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

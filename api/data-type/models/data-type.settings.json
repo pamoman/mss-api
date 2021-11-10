@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "data_types",
+  "info": {
+    "name": "Data Type",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "unique": true
+    },
+    "data_category": {
+      "via": "data_types",
+      "model": "data-category"
+    }
+  }
+}

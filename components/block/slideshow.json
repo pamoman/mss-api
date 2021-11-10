@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_block_slideshows",
+  "info": {
+    "name": "slideshow",
+    "icon": "images",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "settings": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.slideshow-settings"
+    }
+  }
+}

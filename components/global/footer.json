@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_global_footer",
+  "info": {
+    "name": "footer",
+    "icon": "window-minimize"
+  },
+  "options": {},
+  "attributes": {
+    "footerColumns": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.footer-columns"
+    },
+    "copyright": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "kind": "collectionType",
+  "collectionName": "apps",
+  "info": {
+    "name": "app",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "bundle_id": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "jamf_id": {
+      "type": "integer"
+    },
+    "category": {
+      "model": "category"
+    },
+    "appstore_id": {
+      "type": "integer"
+    },
+    "appstore_url": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "free": {
+      "type": "boolean",
+      "default": true
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "genres": {
+      "via": "apps",
+      "collection": "genre",
+      "dominant": true
+    },
+    "manage_privacy_url": {
+      "type": "string"
+    },
+    "developer_privacy_policy": {
+      "type": "string"
+    },
+    "privacy": {
+      "type": "component",
+      "repeatable": true,
+      "component": "privacy.privacy-types"
+    },
+    "risk_assessments": {
+      "via": "apps",
+      "collection": "risk-assessment",
+      "dominant": true
+    },
+    "risk_level": {
+      "via": "apps",
+      "model": "risk-level"
+    },
+    "dynamic_risk": {
+      "type": "boolean",
+      "default": true
+    },
+    "devices": {
+      "via": "apps",
+      "collection": "device"
+    }
+  }
+}

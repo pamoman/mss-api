@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "data_purposes",
+  "info": {
+    "name": "Data Purpose",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "unique": true
+    }
+  }
+}
