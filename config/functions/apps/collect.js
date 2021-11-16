@@ -77,7 +77,7 @@ const createOrUpdateApps = async () => {
         data = await jamf.getMobileApps(domain);
     }
 
-    for (const app of data.slice(0, 49)) {
+    for (const app of data.slice(0, 5)) {
         const updatedApp = await collect(app);
 
         await strapi.services.app.createOrUpdate(updatedApp);
@@ -92,7 +92,7 @@ const createOrUpdateApps = async () => {
 };
 
 module.exports = {
-    collectAppData: async (params) => {
+    appData: async (params) => {
         domain = params.domain;
         type = params.type;
 

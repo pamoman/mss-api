@@ -2,8 +2,16 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/apps/:domain/:type",
+      "path": "/apps/collect/:domain/:type",
       "handler": "app.collect",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/apps/export/:domain/:type",
+      "handler": "app.export",
       "config": {
         "policies": []
       }

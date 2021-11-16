@@ -8,6 +8,9 @@
 module.exports = {
     // GET /apps/dlg
     collect: async ({ params }) => {
-        return await strapi.config.functions.apps.apps.collectAppData(params);
+        return await strapi.config.functions.apps.collect.appData(params);
     },
+    export: async ({ params }) => {
+        return await strapi.config.functions.apps.export.appData(params);
+    }
 };
