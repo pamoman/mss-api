@@ -16,7 +16,7 @@ const calculateRisk = async (risks) => {
         res = await strapi.query("risk-level").findOne({ level: maxRiskLevel });
     }
     
-    return res.id;
+    return res;
 };
 
 const updateRiskLevel = async (riskAssessments = []) => {

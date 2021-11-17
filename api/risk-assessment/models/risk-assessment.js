@@ -9,18 +9,9 @@ const updateAppsWithRiskAssessment = async (res) => {
     const { apps } = res;
 
     for (const app of apps) {
-        const { id, dynamic_risk } = app;
+        const { id } = app;
 
-        if (dynamic_risk) {
-
-            const res = await strapi.query("app").findOne({ id }, ["risk_assessments", "risk_assessments.risk_level"]);
-
-            const { risk_assessments } = res;
-
-            const risk_level = await strapi.config.functions.apps.risk.updateAppRiskLevel(risk_assessments);
-
-            await strapi.query("app").update({ id }, { risk_level });
-        }
+        await strapi.query("app").update({ id }, { forceUpdateRiskLevel: true });
     }
 };
 

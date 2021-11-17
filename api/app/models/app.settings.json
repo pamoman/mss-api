@@ -78,6 +78,22 @@
     "devices": {
       "via": "apps",
       "collection": "device"
+    },
+    "Pub": {
+      "type": "boolean",
+      "default": false
+    },
+    "guidelines": {
+      "type": "string"
+    },
+    "information": {
+      "type": "richtext"
+    },
+    "date_confirmed": {
+      "type": "date"
+    },
+    "date_revised": {
+      "type": "date"
     }
   }
 }
