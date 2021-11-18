@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_excel_conditions",
+  "info": {
+    "name": "condition",
+    "icon": "question",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "expression": {
+      "type": "string"
+    }
+  }
+}

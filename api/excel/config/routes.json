@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/excel",
+      "handler": "excel.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/excel",
+      "handler": "excel.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/excel",
+      "handler": "excel.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

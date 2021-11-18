@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "excels",
+  "info": {
+    "name": "excel",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "columns": {
+      "type": "component",
+      "repeatable": true,
+      "component": "excel.row"
+    }
+  }
+}

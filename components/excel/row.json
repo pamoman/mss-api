@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_excel_columns",
+  "info": {
+    "name": "column",
+    "icon": "file-excel",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "header": {
+      "type": "string"
+    },
+    "key": {
+      "type": "string"
+    },
+    "width": {
+      "type": "integer"
+    },
+    "content": {
+      "type": "component",
+      "repeatable": false,
+      "component": "excel.content"
+    }
+  }
+}

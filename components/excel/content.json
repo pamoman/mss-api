@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_excel_contents",
+  "info": {
+    "name": "content",
+    "icon": "align-left",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "string"
+    },
+    "value_is_db_field": {
+      "type": "boolean",
+      "default": true
+    },
+    "db_field_prop": {
+      "type": "string",
+      "default": "root"
+    },
+    "is_array": {
+      "type": "boolean",
+      "default": false
+    },
+    "separator": {
+      "type": "string",
+      "default": ","
+    },
+    "condition": {
+      "type": "component",
+      "repeatable": false,
+      "component": "excel.condition"
+    }
+  }
+}

@@ -49,6 +49,14 @@ const handleGenres = async (data, genres) => {
     data.genres = genreIds;
 };
 
+const handleGuidelines = async (data, guidelines_link) => {
+    if (!guidelines_link) {
+        data.guidelines = false;
+    } else {
+        data.guidelines = true;
+    }
+};
+
 /* Update app risk level only if dynamic risk is enabled */
 const handleRiskLevel = async (data, risk_assessments) => {
     const { id } = await strapi.config.functions.apps.risk.updateAppRiskLevel(risk_assessments);
@@ -79,7 +87,7 @@ const handleRiskDates = async (data, date_confirmed) => {
 
 /* Main */
 const handleData = async (data, id = null) => {
-    const { category, genres } = data || {};
+    const { category, genres, guidelines_link } = data || {};
     let { name } = category || {};
 
     if (name && typeof(name) === "string") {
@@ -89,6 +97,8 @@ const handleData = async (data, id = null) => {
     if (genres && typeof(genres[0]) === "string") {
         await handleGenres(data, genres);
     }
+
+    await handleGuidelines(data, guidelines_link);
 
     if (data?.risk_assessments || data?.risk_level || data?.forceUpdateRiskLevel) {
         let fields;
