@@ -79,7 +79,7 @@
       "via": "apps",
       "collection": "device"
     },
-    "Pub": {
+    "pub": {
       "type": "boolean",
       "default": false
     },

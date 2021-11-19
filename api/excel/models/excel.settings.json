@@ -1,6 +1,6 @@
 {
   "kind": "singleType",
-  "collectionName": "excels",
+  "collectionName": "excel",
   "info": {
     "name": "excel",
     "description": ""
@@ -15,7 +15,7 @@
     "columns": {
       "type": "component",
       "repeatable": true,
-      "component": "excel.row"
+      "component": "excel.column"
     }
   }
 }

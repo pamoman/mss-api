@@ -98,7 +98,9 @@ const handleData = async (data, id = null) => {
         await handleGenres(data, genres);
     }
 
-    await handleGuidelines(data, guidelines_link);
+    if (typeof(guidelines_link) !== "undefined") {
+        await handleGuidelines(data, guidelines_link);
+    }
 
     if (data?.risk_assessments || data?.risk_level || data?.forceUpdateRiskLevel) {
         let fields;

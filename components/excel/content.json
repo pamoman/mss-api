@@ -1,22 +1,15 @@
 {
-  "collectionName": "components_excel_contents",
+  "collectionName": "components_excel_settings",
   "info": {
-    "name": "content",
+    "name": "settings",
     "icon": "align-left",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "value": {
-      "type": "string"
-    },
-    "value_is_db_field": {
-      "type": "boolean",
-      "default": true
-    },
-    "db_field_prop": {
+    "nested_prop": {
       "type": "string",
-      "default": "root"
+      "default": "name"
     },
     "is_array": {
       "type": "boolean",
@@ -24,12 +17,23 @@
     },
     "separator": {
       "type": "string",
-      "default": ","
+      "default": ", "
     },
-    "condition": {
-      "type": "component",
-      "repeatable": false,
-      "component": "excel.condition"
+    "is_nested": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_bool": {
+      "type": "boolean",
+      "default": false
+    },
+    "bool_true": {
+      "type": "string",
+      "default": "Ja"
+    },
+    "bool_false": {
+      "type": "string",
+      "default": "Nej"
     }
   }
 }

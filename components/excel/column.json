@@ -14,9 +14,10 @@
       "type": "string"
     },
     "width": {
-      "type": "integer"
+      "type": "integer",
+      "default": 30
     },
-    "content": {
+    "settings": {
       "type": "component",
       "repeatable": false,
       "component": "excel.content"
