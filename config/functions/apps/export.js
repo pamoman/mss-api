@@ -72,21 +72,32 @@ const toExcel = async (domain) => {
 
         sheet.addRows(rows);
 
-        await workbook.xlsx.writeFile("./public/apps/bos/excel/apps.xlsx");
+        const filename = `./public/apps/${domain}/excel/apps.xlsx`;
+
+        await workbook.xlsx.writeFile(filename);
+
+        strapi.log.info(`Excel file saved to: ${filename}`);
 
         return `
-            <h1>Ladda ned filen nedan</h1>
-            <a href='/apps/bos/excel/apps.xlsx'>Download</a>
+            <h1>Ladda ned ${domain.toUpperCase()} apps excel filen nedan</h1>
+            <a href='/apps/${domain}/excel/apps.xlsx'>Download</a>
         `;
 };
 
 module.exports = {
     appData: async (params) => {
         const { domain, type } = params;
-        
-        switch (type) {
-            case "excel":
-                return await toExcel(domain);
+        const allowed = ["bos", "dlg"];
+
+        if (allowed.includes(domain)) {
+            switch (type) {
+                case "excel":
+                    strapi.log.info("Creating apps excel file");
+    
+                    return await toExcel(domain);
+            }
+        } else {
+            strapi.log.fatal("Invalid domain name.")
         }
     }
 };
