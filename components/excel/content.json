@@ -11,21 +11,9 @@
       "type": "string",
       "default": "name"
     },
-    "is_array": {
-      "type": "boolean",
-      "default": false
-    },
     "separator": {
       "type": "string",
       "default": ", "
-    },
-    "is_nested": {
-      "type": "boolean",
-      "default": false
-    },
-    "is_bool": {
-      "type": "boolean",
-      "default": false
     },
     "bool_true": {
       "type": "string",

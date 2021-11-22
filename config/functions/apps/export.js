@@ -5,31 +5,35 @@
 const ExcelJS = require('exceljs');
 
 const getContents = (column = {}, app = {}) => {
+    const { helper } = strapi.config.functions.apps;
     const { key, settings } = column;
-    const { is_array, separator = ",", is_nested, nested_prop, is_bool, bool_true, bool_false } = settings || {};
+    const { separator = ", ", nested_prop = "name", bool_true = "Yes", bool_false = "No" } = settings || {};
+    const appKey = app[key];
+
+    const { isUndefined, isNull, isArray, isNested, isBool } = helper.getTypeOf(appKey);
 
     let val;
 
-    if ([key] in app && app[key] !== null) {
+    if (!isUndefined || !isNull) {
         switch (true) {
-            case is_array && is_nested:
-                val = app[`${key}`].map(element => {
-                    return element[`${nested_prop}`];
+            case isArray && isNested:
+                val = appKey.map(element => {
+                    return element[nested_prop];
                 }).join(separator);
                 break;
-            case is_array:
-                val = app[`${key}`].map(element => {
+            case isArray:
+                val = appKey.map(element => {
                     return element;
                 }).join(separator);
                 break;
-            case is_nested:
-                val = app[`${key}`][`${nested_prop}`];
+            case isNested:
+                val = appKey[nested_prop];
                 break;
-            case is_bool:
-                val = app[`${key}`] ? bool_true : bool_false;
+            case isBool:
+                val = appKey ? bool_true : bool_false;
                 break;
             default:
-                val = app[`${key}`];
+                val = appKey;
                 break;
         }
     }
