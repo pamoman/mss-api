@@ -2,6 +2,30 @@
  * API - Evaluate Apps
  */
 
+const handleRiskLevel = async (riskAssessments, riskLevels, data) => {
+    const risks = [];
+
+    let res;
+    
+    for (const riskAssessment of riskAssessments) {
+        const { risk_level } = riskAssessment;
+
+        risks.push(risk_level);
+    };
+
+    if (!risks.length) {
+        res = riskLevels.find(risk => risk.default === true)
+    } else {
+        const maxRiskLevel = Math.max.apply(Math, risks.map((risk) => risk.level ));
+
+        res = riskLevels.find(risk => risk.level === maxRiskLevel);
+    }
+
+    data.risk_level = res.id;
+
+    return res;
+};
+
 /* Update the dates when changing risk levels */
 const handleRiskDates = async (level, dateConfirmed, data) => {
     const { helper } = strapi.config.functions.apps;
@@ -24,6 +48,8 @@ const handleRiskDates = async (level, dateConfirmed, data) => {
 
 const evaluateAppRisk = async (domain) => {
     const apps = await strapi.query("app").find({ _limit: -1 }, ["risk_assessments", "risk_assessments.risk_level"]);
+    const riskLevels = await strapi.query("risk-level").find();
+
     let count = 0;
 
     for (const app of apps) {
@@ -32,10 +58,9 @@ const evaluateAppRisk = async (domain) => {
         if (dynamic_risk) {
             strapi.log.info(`Evaluating risk level for ${domain} app: ${title}`);
 
-            const riskLevel = await strapi.config.functions.apps.risk.updateAppRiskLevel(risk_assessments);
-            const { level } = riskLevel || {};
+            const data = {};
 
-            const data = { risk_level: riskLevel.id };
+            const { level } = await handleRiskLevel(risk_assessments, riskLevels, data);
 
             handleRiskDates(level, date_confirmed, data);
 
