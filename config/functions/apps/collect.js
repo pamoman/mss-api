@@ -72,12 +72,12 @@ const createOrUpdateApps = async () => {
     let data, count = 0;
 
     if (type === "appstore-dev") {
-        data = await strapi.query("app").find();
+        data = await strapi.query("app").find({ _limit: -1 });
     } else {
         data = await jamf.getMobileApps(domain);
     }
 
-    for (const app of data.slice(0, 5)) {
+    for (const app of data) {
         const updatedApp = await collect(app);
 
         await strapi.services.app.createOrUpdate(updatedApp);

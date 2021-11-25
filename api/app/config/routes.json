@@ -18,6 +18,14 @@
     },
     {
       "method": "GET",
+      "path": "/apps/evaluate/:domain/:type",
+      "handler": "app.evaluate",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/apps",
       "handler": "app.find",
       "config": {

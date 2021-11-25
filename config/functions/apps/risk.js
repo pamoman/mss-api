@@ -23,15 +23,7 @@ const updateRiskLevel = async (riskAssessments = []) => {
     const riskAssessmentsRiskLevels = [];
     
     for (const riskAssessment of riskAssessments) {
-        let res;
-
-        if (typeof riskAssessment === "number") {
-            res = await strapi.query("risk-assessment").findOne({ id: riskAssessment }, ["risk_level"]);
-        } else {
-            res = riskAssessment;
-        }
-
-        const { risk_level } = res;
+        const { risk_level } = riskAssessment;
 
         riskAssessmentsRiskLevels.push(risk_level);
     };
@@ -41,6 +33,6 @@ const updateRiskLevel = async (riskAssessments = []) => {
 
 module.exports = {
     updateAppRiskLevel: async (riskAssessments) => {
-        return await updateRiskLevel(riskAssessments)
+        return await updateRiskLevel(riskAssessments);
     }
 };

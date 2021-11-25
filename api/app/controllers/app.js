@@ -12,5 +12,8 @@ module.exports = {
     },
     export: async ({ params }) => {
         return await strapi.config.functions.apps.export.appData(params);
+    },
+    evaluate: async ({ params }) => {
+        return await strapi.config.functions.apps.evaluate.appData(params);
     }
 };

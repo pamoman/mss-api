@@ -5,20 +5,4 @@
  * to customize this model
  */
 
-const updateAppsWithRiskAssessment = async (res) => {
-    const { apps } = res;
-
-    for (const app of apps) {
-        const { id } = app;
-
-        await strapi.query("app").update({ id }, { forceUpdateRiskLevel: true });
-    }
-};
-
-module.exports = {
-    lifecycles: {
-        async afterUpdate(res) {
-            await updateAppsWithRiskAssessment(res);
-        }
-    },
-};
+module.exports = {};

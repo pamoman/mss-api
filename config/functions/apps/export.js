@@ -58,7 +58,7 @@ const toExcel = async (domain) => {
             bold: true
         };
 
-        const apps = await strapi.query("app").find();
+        const apps = await strapi.query("app").find({ _limit: -1 });
 
         const rows = apps.map(app => {
             const fields = {};

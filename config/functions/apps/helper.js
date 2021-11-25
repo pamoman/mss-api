@@ -35,5 +35,8 @@ module.exports = {
         }
     
         return { isUndefined, isNull, isArray, isNested, isBool };
+    },
+    formatMyDate: (value, locale = 'sv-SV') => {
+        return new Date(value).toLocaleDateString(locale);
     }
 }
