@@ -2,6 +2,7 @@
  * API - Evaluate Apps
  */
 
+/* Update the app risk level based on app risk assements */
 const handleRiskLevel = async (riskAssessments, riskLevels, data) => {
     const risks = [];
 
@@ -46,6 +47,7 @@ const handleRiskDates = async (level, dateConfirmed, data) => {
     }
 };
 
+/* Evaluate all app risk levels */
 const evaluateAppRisk = async (domain) => {
     const apps = await strapi.query("app").find({ _limit: -1 }, ["risk_assessments", "risk_assessments.risk_level"]);
     const riskLevels = await strapi.query("risk-level").find();

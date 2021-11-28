@@ -8,32 +8,39 @@ const getContents = (column = {}, app = {}) => {
     const { helper } = strapi.config.functions.apps;
     const { key, settings } = column;
     const { separator = ", ", nested_prop = "name", bool_true = "Yes", bool_false = "No" } = settings || {};
-    const appKey = app[key];
+    const appVal = app[key];
 
-    const { isUndefined, isNull, isArray, isNested, isBool } = helper.getTypeOf(appKey);
+    const { isUndefined, isNull, isArray, isNested, isBool, isURL } = helper.getTypeOf(appVal);
 
     let val;
 
     if (!isUndefined || !isNull) {
         switch (true) {
             case isArray && isNested:
-                val = appKey.map(element => {
+                val = appVal.map(element => {
                     return element[nested_prop];
                 }).join(separator);
                 break;
             case isArray:
-                val = appKey.map(element => {
+                val = appVal.map(element => {
                     return element;
                 }).join(separator);
                 break;
             case isNested:
-                val = appKey[nested_prop];
+                val = appVal[nested_prop];
                 break;
             case isBool:
-                val = appKey ? bool_true : bool_false;
+                val = appVal ? bool_true : bool_false;
+                break;
+            case isURL:
+                val = {
+                    text: appVal,
+                    hyperlink: appVal,
+                    tooltip: appVal
+                };
                 break;
             default:
-                val = appKey;
+                val = appVal;
                 break;
         }
     }
@@ -41,47 +48,89 @@ const getContents = (column = {}, app = {}) => {
     return { [key]: val };
 };
 
+const getTypeRow = (columns) => {
+    const typeRow = {};
+
+    columns.forEach(column => {
+        const { key, type } = column;
+
+        if (type) {
+            typeRow[key] = type.name;
+        }
+    });
+
+    return typeRow;
+};
+
+const getAppRows = async (columns) => {
+    const apps = await strapi.query("app").find({ _limit: -1 });
+
+    const appRows = apps.map(app => {
+        const fields = {};
+        
+        columns.forEach(column => {
+            Object.assign(fields, getContents(column, app));
+        });
+
+        return fields;
+    });
+
+    return appRows;
+};
+
+const applyLinkStyle = (sheet) => {
+    sheet.eachRow((row, rowNumber) => {
+        row.eachCell((cell, colNumber) => {
+            const { value: { hyperlink } } = cell || {};
+
+            switch (true) {
+                case typeof(hyperlink) !== "undefined":
+                    row.getCell(colNumber).font = {
+                        underline: true,
+                        color: { argb: 'FF0000FF' }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        });
+    });
+};
+
 const toExcel = async (domain) => {
+    const filename = `./public/apps/${domain}/excel/apps.xlsx`;
     const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet(domain);
 
-        const sheet = workbook.addWorksheet(domain);
-        const { columns } = await strapi.query("excel").findOne() || {};
+    const { columns } = await strapi.query("excel").findOne() || {};
 
-        sheet.columns = columns.map(column => {
-            const { header, key, width } = column;
+    sheet.columns = columns.map(column => {
+        const { header, key, width } = column;
 
-            return { header, key, width };
-        });
+        return { header, key, width };
+    });
 
-        sheet.getRow(1).font = {
-            size: 14,
-            bold: true
-        };
+    sheet.getRow(1).font = {
+        size: 14,
+        bold: true
+    };
 
-        const apps = await strapi.query("app").find({ _limit: -1 });
+    const typeRow = getTypeRow(columns);
+    const appRows = await getAppRows(columns);
 
-        const rows = apps.map(app => {
-            const fields = {};
-            
-            columns.forEach(column => {
-                Object.assign(fields, getContents(column, app));
-            });
+    sheet.addRow(typeRow);
+    sheet.addRows(appRows);
 
-            return fields;
-        });
+    applyLinkStyle(sheet);
 
-        sheet.addRows(rows);
+    await workbook.xlsx.writeFile(filename);
 
-        const filename = `./public/apps/${domain}/excel/apps.xlsx`;
+    strapi.log.info(`Excel file saved to: ${filename}`);
 
-        await workbook.xlsx.writeFile(filename);
-
-        strapi.log.info(`Excel file saved to: ${filename}`);
-
-        return `
-            <h1>Ladda ned ${domain.toUpperCase()} apps excel filen nedan</h1>
-            <a href='/apps/${domain}/excel/apps.xlsx'>Download</a>
-        `;
+    return `
+        <h1>Ladda ned ${domain.toUpperCase()} apps excel filen nedan</h1>
+        <a href='/apps/${domain}/excel/apps.xlsx'>Download</a>
+    `;
 };
 
 module.exports = {

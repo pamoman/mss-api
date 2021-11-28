@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_excel_types",
+  "info": {
+    "name": "type",
+    "icon": "window-maximize",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

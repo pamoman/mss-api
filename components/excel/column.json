@@ -17,6 +17,11 @@
       "type": "integer",
       "default": 30
     },
+    "type": {
+      "type": "component",
+      "repeatable": false,
+      "component": "excel.type"
+    },
     "settings": {
       "type": "component",
       "repeatable": false,
